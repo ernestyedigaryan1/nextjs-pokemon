@@ -14,7 +14,7 @@ export async function getStaticPaths() {
         paths: pokemon.map((pokemon) => ({
             params: { id: pokemon.id.toString() },
         })),
-        revalidate: 30,
+        fallback: false,
     };
 }
 
@@ -27,7 +27,7 @@ export async function getStaticProps({ params }) {
         props: {
             pokemon: await resp.json(),
         },
-        // revalidate: 30,
+        revalidate: 30,
     };
 }
 
